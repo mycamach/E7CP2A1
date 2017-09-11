@@ -36,17 +36,20 @@ def count_people(array)
   sum = 0
   array.each do |ele|
     if ele.include?(:nombre)
-      sum += 1 
+      sum += 1
     end
   end
   puts "Hay #{sum} personas en la lista."
 end
 
 def show_district(array)
-  array.each do |ele|
-    if ele.include?(:comuna)
-      puts values
-    end
+  array.select { |ele| puts ele[:comuna] }
+end
+# Falta ver repetidos y mayúsculas y minúsculas
+
+def show_age_range(array)
+  array.select do |ele|
+    puts ele[:nombre] if ele[:edad] >= 20 && ele[:edad] <= 25
   end
 end
 
@@ -89,6 +92,7 @@ while option
   when 5
     show_district(list)
   when 6
+    show_age_range(list)
   when 7
   when 8
   when 9
