@@ -53,6 +53,12 @@ def show_age_range(array)
   end
 end
 
+def show_ages(array)
+  array.select do |ele|
+    puts "#{ele[:nombre]} tiene #{ele[:edad]} años."
+  end
+end
+
 list = [{ nombre: 'Seba', edad: 33, comuna: 'San Miguel', genero: 'Masculino' }]
 
 print list[0], "\n"
@@ -94,6 +100,7 @@ while option
   when 6
     show_age_range(list)
   when 7
+    show_ages(list)
   when 8
   when 9
   when 10
