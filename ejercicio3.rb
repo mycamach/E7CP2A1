@@ -1,5 +1,4 @@
 def add_person(array)
-
   puts 'Ingrese nombre'
   name = gets.chomp
   puts 'Ingrese edad (sólo números)'
@@ -63,12 +62,17 @@ def age_average(array)
   suma = array.inject(0) { |sum, e| sum + e[:edad] }
   i = 0
   array.each { i += 1 }
-  print "El promedio de las edades es #{suma}."
+  print "El promedio de las edades es #{suma}.", "\n"
 end
 
 def gender_category(array)
-  gender = array.group_by { |e| e[:genero] }
-  print gender, "\n"
+  array.select do |ele|
+    if ele[:genero] == 'Masculino'
+      puts "Los hombres son: #{ele[:nombre]}"
+    else
+      puts "Las mujeres son: #{ele[:nombre]}"
+    end
+  end
 end
 
 list = [{ nombre: 'Seba', edad: 33, comuna: 'San Miguel', genero: 'Masculino' }]
@@ -107,18 +111,26 @@ while option
 
   when 4
     count_people(list)
+
   when 5
     show_district(list)
+
   when 6
     show_age_range(list)
+
   when 7
     show_ages(list)
+
   when 8
+    age_average(list)
+
   when 9
     gender_category(list)
+
   when 10
     puts 'Chau'
-	exit
+    exit
+    
   else
     puts 'Opción inválida, vuelva a ingresar una opción.'
   end
