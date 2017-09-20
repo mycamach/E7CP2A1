@@ -59,19 +59,16 @@ def show_ages(array)
   end
 end
 
-#def age_average(array)
-#end
-
-#stock = hash.values.inject(0) {|sum, v| sum + v}
+def age_average(array)
+  suma = array.inject(0) { |sum, e| sum + e[:edad] }
+  i = 0
+  array.each { i += 1 }
+  print "El promedio de las edades es #{suma}."
+end
 
 def gender_category(array)
-  array.select do |ele|
-    if ele[:genero] == 'Masculino'
-      puts "Los hombres son: #{ele[:nombre]}"
-    else
-      puts "Las mujeres son: #{ele[:nombre]}"
-    end
-  end
+  gender = array.group_by { |e| e[:genero] }
+  print gender, "\n"
 end
 
 list = [{ nombre: 'Seba', edad: 33, comuna: 'San Miguel', genero: 'Masculino' }]
